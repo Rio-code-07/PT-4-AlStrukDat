@@ -1,7 +1,17 @@
 def sortPeserta(peserta):
     # Kerjakan di sini yaw
-    pass
-
+    if len(peserta) <= 1:
+        return peserta
+    pivot = peserta[-1]
+    left = []
+    right = []
+    for x in peserta[:-1]:
+        if (x["total"], x["penonton"]) > (pivot["total"],pivot["penonton"]):
+            left.append(x)
+        else:
+            right.append(x)
+        
+    return sortPeserta(left) + [pivot] + sortPeserta(right)
 
 # Program Utama - Jangan di Hapus
 data_awal = [
